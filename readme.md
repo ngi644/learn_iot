@@ -42,7 +42,7 @@ Arduino IDE内の環境設定における追加ボードマネージャに記述
 ### 温度センサー用ライブラリ
 
 - DHT12
-  - https://github.com/RobTillaart/Arduino
+  - https://playground.arduino.cc/Main/DHT12SensorLibrary
 
 ### Firebaseとの通信用ライブラリ
 
@@ -51,7 +51,8 @@ Arduino IDE内の環境設定における追加ボードマネージャに記述
 - HTTPClientESP32Ex
   - https://github.com/mobizt/HTTPClientESP32Ex
 - ArduinoJson
-  - https://arduinojson.org/v5/doc/
+  - ライブラリ検索で追加
+  - https://arduinojson.org
   
 
 ## Webページにおいて利用している可視化ライブラリ
@@ -59,3 +60,12 @@ Arduino IDE内の環境設定における追加ボードマネージャに記述
 ### vis.js
 
 [http://visjs.org/](http://visjs.org/) 3D,2Dの可視化を容易に可能とするjavascriptライブラリです．今回は，2dのグラフ機能を利用しています．
+
+## リファレンス
+
+- M5Stack LCD
+  - https://docs.m5stack.com/#/en/api/lcd
+- Arduino Json
+  - https://arduinojson.org/v5/doc/
+- Firebase Documents
+  - https://firebase.google.com/docs/
