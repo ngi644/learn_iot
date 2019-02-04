@@ -50,6 +50,8 @@ Arduino IDE内の環境設定における追加ボードマネージャに記述
   - https://github.com/mobizt/Firebase-ESP32
 - HTTPClientESP32Ex
   - https://github.com/mobizt/HTTPClientESP32Ex
+- ArduinoJson
+  - https://arduinojson.org/v5/doc/
   
 
 ## Webページにおいて利用している可視化ライブラリ
