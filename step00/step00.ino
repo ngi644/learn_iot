@@ -24,12 +24,12 @@ void loop() {
 }
 
 void displaySensorData(){
-  temp = dht12.readTemperature();
-  humid = dht12.readHumidity();
+  float temp = dht12.readTemperature();
+  float humid = dht12.readHumidity();
 
   M5.Lcd.setTextSize(3);
   M5.Lcd.setCursor(0, 20);
   M5.Lcd.printf("Temperature:%2.1f  \r\nHumidity: %2.0f%%", temp, humid);
 
-  yeild()
+  yield();
 }
