@@ -69,3 +69,7 @@ Arduino IDE内の環境設定における追加ボードマネージャに記述
   - https://arduinojson.org/v5/doc/
 - Firebase Documents
   - https://firebase.google.com/docs/
+  - Realtime databae REST
+    - [データの取得](https://firebase.google.com/docs/database/rest/retrieve-data?hl=ja)
+    - [データの保存](https://firebase.google.com/docs/database/rest/save-data?hl=ja)
+  
