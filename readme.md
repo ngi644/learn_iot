@@ -39,11 +39,6 @@ Arduino IDE内の環境設定における追加ボードマネージャに記述
 ## 利用するArduino用ライブラリ
 
 
-### 温度センサー用ライブラリ
-
-- DHT12
-  - https://playground.arduino.cc/Main/DHT12SensorLibrary
-
 ### Firebaseとの通信用ライブラリ
 
 - Firebase ESP32
@@ -72,4 +67,10 @@ Arduino IDE内の環境設定における追加ボードマネージャに記述
   - Realtime databae REST
     - [データの取得](https://firebase.google.com/docs/database/rest/retrieve-data?hl=ja)
     - [データの保存](https://firebase.google.com/docs/database/rest/save-data?hl=ja)
-  
+
+
+
+### 温度センサー用ライブラリ
+
+- DHT12
+  - https://playground.arduino.cc/Main/DHT12SensorLibrary
