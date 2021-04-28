@@ -25,12 +25,11 @@ float temp = 0.0F;
 Ticker tickerMeasure;
 
 #include "FirebaseESP32.h"
-#include <ArduinoJson.h>
 #define FIREBASE_HOST "xxxxx.firebaseio.com"
 #define FIREBASE_AUTH "auth-key"
 
 FirebaseData firebaseData;
-DynamicJsonBuffer jsonBuffer;
+FirebaseJson fb_json;
 
 String station_name = "station_name";
 String lastTimestamp;
@@ -89,15 +88,12 @@ void publishData(){
   sensorUpdated = false;
 
   // push data to firebase
-  JsonObject& stationdata = jsonBuffer.createObject();
-  stationdata["temp"] = temp;
-  stationdata["acc_x"] = accX;
-  stationdata["acc_y"] = accY;
-  stationdata["acc_z"] = accZ;
-  stationdata["timestamp"] = lastTimestamp;
-  String jsonStr = "";
-  stationdata.printTo(jsonStr);
-  Firebase.pushJSON(firebaseData, "/stations/" + station_name, jsonStr);
+  fb_json.set("temp", temp);
+  fb_json.set("acc_x", accX);
+  fb_json.set("acc_y", accY);
+  fb_json.set("acc_z", accZ);
+  fb_json.set("timestamp", lastTimestamp);
+  Firebase.pushJSON(firebaseData, "/stations/" + station_name, fb_json);
 
 }
 
