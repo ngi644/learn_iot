@@ -51,7 +51,7 @@
       let app = firebase.app();
       let station_id = "st001";
       let container = document.getElementById('visualization');
-      let names = ['Temperature(c)', 'Humidity(%)'];
+      let names = ['Temperature(c)', 'ACC X', 'ACC Y', 'ACC Z'];
       let dataset = new vis.DataSet();
       let groups = new vis.DataSet();
       
@@ -100,7 +100,9 @@
       ref.limitToLast(100).on('child_added', function(snapshot) {
           var newData = snapshot.val();
           addItem(newData.timestamp, newData.temp, 0);
-          addItem(newData.timestamp, newData.humid, 1);
+          addItem(newData.timestamp, newData.acc_x, 1);
+          addItem(newData.timestamp, newData.acc_y, 2);
+          addItem(newData.timestamp, newData.acc_z, 3);
           let now = new Date();
           graph2d.setWindow(now.setMinutes(now.getMinutes() - 5), now.setMinutes(now.getMinutes() + 10), {animation: false});
       });
