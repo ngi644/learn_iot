@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>データの可視化</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/8.7.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.7.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.7.1/firebase-database.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" />
+
+    <style type="text/css">
+        .style-0 {
+            fill: #f2ea00;
+            fill-opacity: 0;
+            stroke-width: 2px;
+            stroke: #b3ab00;
+        }
+        .style-1 {
+            fill: #00b72b;
+            fill-opacity: 0;
+            stroke-width: 2px;
+            stroke: #00b72b;
+        }
+
+        .style-2 {
+            fill: #b2b700;
+            fill-opacity: 0;
+            stroke-width: 2px;
+            stroke: #b2b700;
+        }
+
+    </style>
+
+  </head>
+  <body>
+
+
+  <h2>計測データ</h2>
+
+
+  <div id="visualization"></div>
+
+
+  <script type="text/javascript">
+
+    let station_id = "st001";
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+      let app = firebase.app();
+      let station_id = "st001";
+      let container = document.getElementById('visualization');
+      let names = ['Humidity', 'Pressure', 'Templature'];
+      let dataset = new vis.DataSet();
+      let groups = new vis.DataSet();
+      
+      groups.add({
+          id: 0,
+          content: names[0],
+          className: 'style-0',
+          options: {
+            yAxisOrientation: 'left',
+            interpolation: false,
+            drawPoints: {
+                size: 2
+            }
+          }
+      });
+
+      groups.add({
+          id: 1,
+          content: names[1],
+          className: 'style-1',
+          options: {
+            yAxisOrientation: 'left',
+            interpolation: false,
+            drawPoints: {
+              size: 2
+            }
+          }
+      });
+
+      groups.add({
+          id: 2,
+          content: names[2],
+          className: 'style-2',
+          options: {
+            yAxisOrientation: 'left',
+            interpolation: false,
+            drawPoints: {
+              size: 2
+            }
+          }
+      });
+
+
+      let date = new Date();
+      let options = {
+          dataAxis: {
+              showMinorLabels: true,
+              alignZeros: false
+          },
+          width: '100%',
+          height: '550px',
+          legend: { left: { position: "top-right" } },
+          start: date.setMinutes(date.getMinutes() - 5),
+          end: date.setMinutes(date.getMinutes() + 15)
+
+      };
+      let graph2d = new vis.Graph2d(container, dataset, groups, options);
+
+      var ref = app.database().ref('stations').child(station_id + '/data');
+      ref.limitToLast(100).on('child_added', function(snapshot) {
+          var newData = snapshot.val();
+          addItem(newData.timestamp, newData.humid, 0);
+          addItem(newData.timestamp, newData.press, 1);
+          addItem(newData.timestamp, newData.temp, 2);
+          let now = new Date();
+          graph2d.setWindow(now.setMinutes(now.getMinutes() - 5), now.setMinutes(now.getMinutes() + 10), {animation: false});
+      });
+
+      function addItem(timestamp, value, g) {
+          itm = { x: new Date(timestamp).toLocaleString(), y: value, group: g };
+          dataset.add(itm);
+      }
+
+    });
+  </script>
+
+  <script type="text/javascript">
+    function change_status(st){
+      let ref = firebase.database().ref('stations').child(station_id + '/status');
+      ref.set({status: st});
+    }
+  </script>
+
+  <div>
+    <button onclick="change_status(1);">COLOR 1</button>
+    <button onclick="change_status(2);">COLOR 2</button>
+    <button onclick="change_status(3);">COLOR 3</button>
+  </div>
+
+  </body>
+</html>
