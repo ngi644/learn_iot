@@ -3,7 +3,7 @@
 
 # Firebaseとの連携
 
-前回は，MQTT Subscriber を利用して，ATOMのLEDの状態を変更することができました．では，FirebaseのRealtime databaseと連携してATOMのLEDの状態を変更していきます．
+前回は，MQTT Subscriber を利用して，ATOMのLEDの状態を変更することができました．ここでは，FirebaseのRealtime databaseと連携してATOMのLEDの状態を変更していきます．
 
 
 ## `Realtime database`へLEDの状態を保存する．
@@ -19,7 +19,7 @@ MQTT Subscribe用に作成したフローの `inject`ノードと `mqtt out` を
 ![firebas_tobira](images/lite/firebase_subscriber_1.png)
 
  
- 追加した`Add Firebase`の設定を開き，
+追加した`Add Firebase`の設定を開き，
  - `Firebase`項目は，前回設定した，firebase Realtimeの設定を選択します．
  - `Child Path` は，`stations/st001/status`を入力します．このパスに，デバイスのLEDのカラー状態を設定します．
  - `_Method`は，`set`を選択します．

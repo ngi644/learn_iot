@@ -80,7 +80,7 @@ Firebaseを利用開始するためには、コンソールページへログイ
 Firebaseは、CLI(Command Line Interface)により、Firebaseプロジェクトの管理、操作、デプロイ(公開)を行います．
 
 
-### Windows
+### Windowsを利用する場合
 
 Windowsは，以下のアドレスから，スタンドアロンバイナリをダウンロードして実行します
 
@@ -88,7 +88,7 @@ Windowsは，以下のアドレスから，スタンドアロンバイナリを�
 
 ダウンロードしたバイナリを実行すると， `firebase` コマンドが実行可能なシェルがオープンします．
 
-### macOS, Linux
+### macOS, Linuxを利用する場合
 
 macOS, Linuxでは，npmコマンドにより firebase-toolsをインストールします．
 
@@ -97,6 +97,8 @@ npm install -g firebase-tools
 ```
 
 インストール後、ターミナルから `firebase` コマンドが利用可能になります．
+
+
 
 ## Firebase CLIでログイン
 
